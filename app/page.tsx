@@ -25,18 +25,16 @@ export default async function page() {
   console.log(blogs)
   return (
     <>
-    
     <div className='bg-gray-700 grid grid-cols-4 p-5 gap-5'>
-      {blogs.items.map((blog:any)=>{
-
+      {blogs.items.map((blog:any)=>(
       <div className='bg-white p-5' key={blog.sys.id}>
         <Image src={Kurti1} alt='kurti 1' width={250} height={250}></Image>
-        <h1 className='text-3xl font-semibold '>{blog.fields.title}</h1>
+        <h1 className='text-3xl font-semibold'>{blog.fields.title}</h1>
         <p className='text-md'>{blog.fields.description}</p>
-        <h2 className="font-bold">$50.00</h2>   
+        <h2 className="font-bold">Rs:{blog.fields.price}</h2>   
       </div>
-      })}
-      <div className='bg-white p-5'>
+      ))}
+      {/* <div className='bg-white p-5'>
         <Image src={Kurti2} alt='' width={250} height={250}></Image>
         <h1 className='text-3xl font-semibold '>Female Kurti</h1>
         <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
@@ -77,7 +75,7 @@ export default async function page() {
         <h1 className='text-3xl font-semibold '>Female Kurti</h1>
         <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
         <h2 className="font-bold">$50.00</h2>
-      </div>
+      </div> */}
     </div>
 
     
