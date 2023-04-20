@@ -1,91 +1,86 @@
+import React from 'react'
+import Kurti1 from "../public/1.jpg"
+import Kurti2 from "../public/2.jpg"
+import Kurti3 from "../public/3.jpg"
+import Kurti4 from "../public/4.jpg"
+import Kurti5 from "../public/1.webp"
+import Kurti6 from "../public/2.webp"
+import Kurti7 from "../public/3.webp"
+import Kurti8 from "../public/4.webp"
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+async function getBlogs() {
+  const res = await fetch(`https://cdn.contentful.com/spaces/${process.env.SPACE_ID}/entries?access_token=${process.env.CONTENTFUL_ACCESS_KEY}&content_type=cards`,{cache:"no-store"});
+  
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
 
-const inter = Inter({ subsets: ['latin'] })
+  return res.json();
+}
 
-export default function Home() {
+export default async function page() {
+  const blogs = await getBlogs();
+  console.log(blogs)
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+    
+    <div className='bg-gray-700 grid grid-cols-4 p-5 gap-5'>
+      {blogs.items.map((blog:any)=>{
+
+      <div className='bg-white p-5' key={blog.sys.id}>
+        <Image src={Kurti1} alt='kurti 1' width={250} height={250}></Image>
+        <h1 className='text-3xl font-semibold '>{blog.fields.title}</h1>
+        <p className='text-md'>{blog.fields.description}</p>
+        <h2 className="font-bold">$50.00</h2>   
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
+      })}
+      <div className='bg-white p-5'>
+        <Image src={Kurti2} alt='' width={250} height={250}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='bg-white p-5'>
+        <Image src={Kurti3} alt='kurti 1' width={500} height={500}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
       </div>
-    </main>
+      <div className='bg-white p-5'>
+        <Image src={Kurti4} alt='kurti 1' width={350} height={350}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
+      </div>
+      <div className='bg-white p-5'>
+        <Image src={Kurti5} alt='kurti 1' width={400} height={400}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
+      </div>
+      <div className='bg-white p-5'>
+        <Image src={Kurti6} alt='kurti 1' width={280} height={280}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
+      </div>
+      <div className='bg-white p-5'>
+        <Image src={Kurti7} alt='kurti 1' width={270} height={270}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
+      </div>
+      <div className='bg-white p-5'>
+        <Image src={Kurti8} alt='kurti 1' width={250} height={250}></Image>
+        <h1 className='text-3xl font-semibold '>Female Kurti</h1>
+        <p className='text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem. Veritatis nobis blanditiis explicabo est in, voluptates suscipit alias corporis doloribus vel quaerat itaque officiis optio. Dolore saepe magni aliquam.</p>
+        <h2 className="font-bold">$50.00</h2>
+      </div>
+    </div>
+
+    
+    </>
   )
 }
